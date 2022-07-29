@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "ru">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Чатик</title>
+        <link href='styles.css' rel='stylesheet'>
+        <script src = "ajax.js">
+        </script>
+    </head>
+    <body>
+        <div id = "chat">
+            <div id = "chat-window">
+                <div id = "msg"></div>
+            </div>
+            <input id = "chat-in" type = "textarea" placeholder = "Введите сообщение">
+            <input id = "chat-submit" type = "button" value = "Отправить" onclick = "sendMsg()">
+            <input id = "chat-upd" type = "button" value = "Обновить, если чат завис" onclick = "updateChat()">
+            <div id = "test" style = "margin-left: 1rem;"></div>
+        </div>
+
+        <script>
+            //Снова злоупотребляю ажахом в целях тренировки
+            xml = new XMLHttpRequest()
+
+            xml.open("POST", "checkUser.php", true)
+
+            xml.onreadystatechange = function(){
+                if(this.status == 200 && this.readyState == 4)
+                    document.getElementById("test").innerHTML = this.response
+            }
+
+            xml.send()
+    //        session_start();
+      //      if(isset($_SESSION['user']))
+        //    echo "Привет]";
+        </script>
+    </body>
+</html>
